@@ -1,0 +1,55 @@
+.navbar{
+    display:flex;
+    justify-content:space-around;
+    padding:16px;
+    box-shadow:0 1px 3px -2px black;
+}
+.navbar img{
+    width:50px;
+}
+.navlogo{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+}
+.navlogo p{
+    font-weight: 600;
+    color: #171717;
+    font-size: 30px;
+}
+.navmenu{
+    display:flex;
+    align-items:center;
+    list-style: none;
+    gap: 20px;
+    font-size: 20px;
+    font-family: 500;
+}
+.navmenu{
+    display:flex;
+    align-items:center;
+    gap: 20px;
+    font-size: 20px;
+    font-family: 500;
+    cursor: pointer;
+}
+.navmenu hr{
+    border: none;
+    width: 80%;
+    height: 3px;
+    border-radius: 10px;
+    background: #FF4141;
+
+}
+
+
+
+
+
+
+
+.navlogincart img{
+    width:50px;
+    color: #626262;
+    
+}

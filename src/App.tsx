@@ -1,20 +1,10 @@
+import React from 'react';
+import { Navbar } from './Components/Navbar/Navbar';
 
-import { useState } from "react";
-import { Header } from "./components/Header";
-import Message from "./components/Message";
-
-
-function App() {
- const [alertVisible,setAlertVisible]  = useState(false)
-
- 
-  
+export default function App() {
   return (
     <div>
-      <Header />
-      <Message />
-     </div>
+      <Navbar />
+    </div>
   );
 }
-
-export default App;
