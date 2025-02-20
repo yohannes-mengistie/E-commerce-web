@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './Navbar.module.css'
 import shopping from '../Assets/shopping.png'
 import logo from '../Assets/logo.jpg'
+import { Link } from 'react-router-dom'
 
 export const Navbar = () => {
   const [menu,setMenu] = React.useState("shop");
@@ -19,15 +20,16 @@ export const Navbar = () => {
           <p>SHOPPER</p>
         </div>
         <ul className={styles.navmenu}>
-          <li onClick={() => eventHandeler({ data: "shop" })}>Shop {menu === "shop" ? <hr/> :null}</li>
-          <li onClick={() => eventHandeler({ data: "men" })}>Men {menu === "men" ? <hr/> : null } </li>
-          <li onClick={() => eventHandeler({ data: "women" })}>Women {menu === "women" ?<hr/> : null}</li>
-          <li onClick={() => eventHandeler({ data: "kids" })}>Kids {menu === "kids" ? <hr/> : null}</li>
+          <li onClick={() => eventHandeler({ data: "shop" })}><Link to='/'>Shop</Link>  {menu === "shop" ? <hr/> :null}</li>
+          <li onClick={() => eventHandeler({ data: "men" })}><Link to='.mens'>Men</Link> {menu === "men" ? <hr/> : null } </li>
+          <li onClick={() => eventHandeler({ data: "women" })}> <Link to='/women'>Women</Link> {menu === "women" ?<hr/> : null}</li>
+          <li onClick={() => eventHandeler({ data: "kids" })}><Link to='kid'>Kids</Link> {menu === "kids" ? <hr/> : null}</li>
         </ul>
 
         <div className={styles.navlogincart}>
-            <button>Login</button>
-            <img src={shopping} alt="" />
+            <Link to='/login'><button>Login</button></Link>
+            <Link to='/cart'><img src={shopping} alt="" /></Link>
+            
             <div className={styles.navcartcount}>0</div>
         </div>
 
