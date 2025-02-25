@@ -85,4 +85,80 @@ a{
     color: black;
     text-decoration: none;
 }
+.navdropdown{
+    display: none;
+}
 
+@media(max-width:1280px){
+    .navbar{
+        padding: 12px 50px;
+    }
+    .navlogo img{
+        width: 40px;
+    }
+    .navlogo{
+        font-size: 25px;
+    }
+    .navmenu{
+        gap:30px;
+        font-size: 16px;
+
+    }
+    .navlogincart{
+        gap: 30px;
+    }
+    .navlogincart button{
+        width: 120px;
+        height: 45px;
+        font-size: 16px;
+    }
+    .navcartcount{
+        margin-left: -40px;
+        font-size: 12px;
+    }
+}
+@media(max-width:1024px){
+    .navbar{
+        padding: 12px 30px;
+    }
+    .navmenu{
+        gap: 25px;
+        font-size: 14px;
+    }
+    .navlogincart button{
+        width: 80px;
+        height: 35px;
+        font-size: 14px;
+    }
+    .navlogincart img{
+        width: 30px;
+    }
+    .navcartcount{
+        width: 18px;
+        height: 18px;
+    }
+}
+@media(max-width:800px){
+    .navbar{
+        padding: 10px 0px;
+    }
+    .navdropdown{
+        display: block;
+        width: 5px;
+        rotate: -90deg;
+        transition: 0.5s;
+    }
+    .navmenu{
+        display:none;
+        height: 80px;
+        width: 100%;
+        position: absolute;
+        background-color: white;
+        justify-content: center;
+        top: 50px;
+
+    }
+    .navvisible{
+        display: flex;
+    }
+}
