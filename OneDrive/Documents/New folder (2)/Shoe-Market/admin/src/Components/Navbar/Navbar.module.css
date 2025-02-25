@@ -1,0 +1,45 @@
+.navlogo{
+    width: 80px;
+
+}
+.navprofile{
+    width: 60px;
+}
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 60px;
+    box-shadow: 0 1px 3px -2px #000;
+}
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:10px;
+
+
+}
+.brand{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    gap: 0px;
+    line-height: 0rem;
+    
+}
+.admin{
+    color:red;
+}
+
+@media(max-width:800px){
+    .navbar{
+        padding: 15px 30px;
+    }
+    .navlogo{
+        width: 50px;
+    }
+    .navprofile{
+        width: 40px;
+    }
+}
