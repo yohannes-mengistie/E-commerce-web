@@ -153,7 +153,8 @@ app.get('/allproducts', async (req, res) => {
     }
 });
 
-// schema creating for user model
+
+// scheama creating for user model
 
 const Users = mongoose.model('Users',{
   username:{
@@ -233,6 +234,68 @@ app.post('/login',async (req,res)=>{
       res.json({success:false,errors:"wrong email"})
     }
 });
+
+// creating end point for newcollection data
+app.get('/newcollections',async(req,res)=>{
+  let products = await Product.find({});
+  let newcollection = products.slice(1).slice(-8) // here we get recently add 8 products and one new products
+  newcollection?console.log('Newcollection Fetched'): console.log('not found')
+  res.send(newcollection);
+})
+
+// CREATING ENDPOINT FOR POPULAR IN WOMEN SECTION
+app.get('/popularinwomen',async(req,res)=>{
+  let product = await Product.find({category:'women'});
+  let popular_in_women = product.slice(0,4);
+  console.log('Popular in women Fetched');
+  res.send(popular_in_women);
+})
+// creating middleware to fetch user
+const fetchUser = async (req,res,next) =>{
+  const token = req.header('auth-token');
+  console.log("Recived token:",token )
+  if(!token){
+    res.status(401).send({errors:"Please authenticate using valid token"})
+  }
+  else{
+    try{
+        const data = jwt.verify(token,'secret_ecom');
+        req.user = data.user;
+        next();
+    }catch (error){
+        res.status(401).send({errors:"please authenticate using a valied token"})
+    }
+  }
+}
+
+// creating endpoint for adding product in carddata
+app.post('/addtocart',fetchUser,async (req,res)=>{
+    console.log("added",req.body.itemId);
+    let userData = await Users.findOne({_id:req.user.id});
+    userData.cartData[req.body.itemId] +=1
+    await Users.findOneAndUpdate({_id:req.user.id},{cartData:userData.cartData});
+    res.json({message:"Added"});
+})
+
+// creating endpoint to remove product from cart
+app.post('/removefromcart',fetchUser, async(req,res) =>{
+  console.log("removed",req.body.itemId);
+  let userData = await Users.findOne({_id:req.user.id});
+  if (userData.cartData[req.body.itemId] > 0){
+  userData.cartData[req.body.itemId] -=1
+  await Users.findOneAndUpdate({_id:req.user.id},{cartData:userData.cartData});
+  res.json({message:"Removed"});
+  }
+})
+
+// creating end point to get cartdata
+app.post('/getcart',fetchUser,async(req,res)=>{
+  console.log("get cart");
+  let userData = await Users.findOne({_id:req.user.id});
+  res.json(userData.cartData);
+  
+
+})
 
 
 app.listen(port, (error) => {
